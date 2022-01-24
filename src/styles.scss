@@ -1,1 +1,146 @@
-/* You can add global styles to this file, and also import other style files */
+* {
+  font-family: Roboto, Helvetica, sans-serif;
+}
+
+body {
+  background-color: #274060 !important;
+}
+
+.bg-dark {
+  background-color: #15191f !important;
+}
+
+header .mainTitle a {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  color: #FFEB3B;
+  font-size: 1.25em;
+  text-decoration: none;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  color: #5899E2;
+}
+
+h2{
+  color:#ffffff;
+}
+
+h4{
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  color: #335c81;
+  margin-bottom: 20px;
+}
+
+.lead {
+  color: #ffffff;
+}
+
+.card-header {
+  background-color: #15191f;
+  color: #5899e2;
+}
+
+.card {
+  background-color: #335c81;
+  color: #5899E2;
+}
+
+.card h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  color: #65AFFF;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card h3 {
+  color: #FFFFFF;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 16px;
+  height: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card .internal_picture {
+  width: 100%;
+  height: 255px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.card .internal_picture .model {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 5px;
+  font-family: 'Orbitron', sans-serif;
+  display: block;
+  background-color: #15191f;
+  color: #65AFFF;
+}
+
+
+.btn-primary {
+  background-color: #15191f;
+  border-color: #274060;
+}
+
+.price, .pricing-card-title {
+  color: #FFEB3B;
+}
+
+.model {
+  color: #65AFFF;
+}
+
+#features {
+  background-color: #5899E3;
+}
+
+.feature{
+  font-size: 2em;
+}
+
+.feature h3{
+  color:#15191f;
+}
+#features .text-muted{
+  font-size: 0.5em;
+}
+
+.text-muted{
+  color:#15191f !important;
+}
+
+#pilots{
+  background-color: #15191f;
+}
+
+#pilots h2{
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  color: #65AFFF;
+}
+
+.badge-dark{
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  color: #65AFFF;
+}
+
+.text-secondary{
+  color: #0dcaf0 !important;
+}
