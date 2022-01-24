@@ -1,0 +1,108 @@
+<app-header></app-header>
+
+<main *ngIf="isDataAvailable">
+  <section>
+    <div class="container px-5">
+      <div class="row gx-5 align-items-center justify-content-center">
+        <div class="col-lg-8 col-xl-7 col-xxl-6">
+          <div class="my-5 text-center text-xl-start">
+            <span class="model" *ngIf="Spaceship.model">{{ Spaceship.model }}</span>
+            <h1 class="display-5 fw-bolder text-white mb-2">{{ Spaceship.name }}</h1>
+            <p class="lead fw-normal text-white-50 mb-4">{{ Spaceship.manufacturer }}</p>
+
+            <div class="card mb-4 box-shadow"
+                 *ngIf="Spaceship.cost_in_credits !== undefined && Spaceship.cost_in_credits > 0">
+              <div class="card-header" *ngIf="Spaceship.starship_class">
+                <h4 class="my-0 font-weight-normal"><i class="fas fa-coins"></i> Finance
+                  your {{ Spaceship.starship_class | titlecase  }}</h4>
+              </div>
+              <div class="card-body">
+                <h1 class="card-title pricing-card-title"> {{ Spaceship.cost_in_credits | currency: 'CRE ' }}</h1>
+                <ul class="list-unstyled mt-3 mb-4">
+                  <li *ngIf="Spaceship.crew"><i class="fas fa-check"></i> Approx. {{ Spaceship.crew }} crew members
+                    recruitment included
+                  </li>
+                  <li *ngIf="Spaceship.consumables"><i class="fas fa-check"></i> {{ Spaceship.consumables }}
+                    consumables free of charge
+                  </li>
+                  <li><i class="fas fa-check"></i> Pilot training</li>
+                  <li><i class="fas fa-check"></i> Holographic help center access</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5"
+                                                                           src="{{ Spaceship.picture }}"
+                                                                           alt="{{ Spaceship.name }}"/></div>
+      </div>
+    </div>
+  </section>
+  <!-- Features section-->
+  <section class="py-5" id="features">
+    <div class="container px-5 my-5">
+      <div class="row gx-5">
+        <div class="col-lg-4 mb-5 mb-lg-0"><h2 class="fw-bolder mb-0">Outstanding spaceship model.</h2></div>
+        <div class="col-lg-8">
+          <div class="row gx-5 row-cols-1 row-cols-md-3">
+            <div class="col mb-5 h-100" *ngIf="Spaceship.length">
+              <div class="feature text-white"><i class="fas fa-ruler-horizontal"></i></div>
+              <h2 class="h5">Length</h2>
+              <h3>{{ Spaceship.length  }} <small class="text-muted">meters</small></h3>
+            </div>
+
+            <div class="col mb-5 h-100" *ngIf="Spaceship.max_atmosphering_speed">
+              <div class="feature text-white"><i class="fas fa-fighter-jet"></i></div>
+              <h2 class="h5">Max atmosphering speed</h2>
+              <h3>{{ Spaceship.max_atmosphering_speed }} <small class="text-muted">mph</small></h3>
+            </div>
+
+            <div class="col mb-5 h-100" *ngIf="Spaceship.MGLT">
+              <div class="feature text-white"><i class="fas fa-tachometer-alt"></i></div>
+              <h2 class="h5">MeGaLighT</h2>
+              <h3>{{ Spaceship.MGLT }} <small class="text-muted">mglt</small></h3>
+            </div>
+
+            <div class="col mb-5 h-100" *ngIf="Spaceship.passengers">
+              <div class="feature text-white"><i class="fas fa-users"></i></div>
+              <h2 class="h5">Passengers</h2>
+              <h3>{{ Spaceship.passengers }}</h3>
+            </div>
+
+            <div class="col mb-5 h-100" *ngIf="Spaceship.cargo_capacity">
+              <div class="feature text-white"><i class="fas fa-box"></i></div>
+              <h2 class="h5">Cargo capacity</h2>
+              <h3>{{ Spaceship.cargo_capacity }}</h3>
+            </div>
+
+            <div class="col mb-5 h-100" *ngIf="Spaceship.hyperdrive_rating">
+              <div class="feature text-white"><i class="fas fa-space-shuttle"></i></div>
+              <h2 class="h5">Hyperdrive rating</h2>
+              <h3>{{ Spaceship.hyperdrive_rating }}</h3>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="py-5" id="pilots" *ngIf="Spaceship.listPilots !== undefined && Spaceship.listPilots.length > 0">
+    <div class="container px-5 my-5">
+      <div class="row gx-5 justify-content-center">
+        <div class="col-lg-8 col-xl-6">
+          <div class="text-center">
+            <h2 class="fw-bolder">Our trusted pilots</h2>
+            <p class="lead fw-normal mb-5">Best pilots of the galaxy will train you<br> to pilot
+              your {{ Spaceship.name }}.</p>
+          </div>
+        </div>
+      </div>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3 card-deck">
+        <app-pilot *ngFor="let idPilot of Spaceship.listPilots"
+                   [idPilot]="idPilot"></app-pilot>
+      </div>
+    </div>
+  </section>
+</main>

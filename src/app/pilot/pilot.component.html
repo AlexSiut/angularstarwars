@@ -1,0 +1,19 @@
+  <div class="card h-100 shadow border-0 cursor-pointer" (click)="onViewPilot()">
+    <div class="internal_picture" *ngIf="detailPilotReturned.picture;" style="background-image: url({{ detailPilotReturned.picture }})"></div>
+    <div class="card-body p-4">
+      <div class="badge bg-primary mb-2" *ngIf="detailHomeWorld;" >{{ detailHomeWorld.name }}</div>
+      <a class="text-decoration-none link-dark stretched-link" (click)="onViewPilot()"><h5 class="card-title mb-3">{{ detailPilotReturned.name }}</h5></a>
+      <p class="card-text mb-0">Born <span *ngIf="detailPilotReturned.birth_year;">in {{ detailPilotReturned.birth_year }} </span>
+        <span *ngIf="detailHomeWorld;">on the planet {{ detailHomeWorld.name }}</span>, {{ detailPilotReturned.name }}
+        is a specialist in piloting spaceships <span *ngIf="listSpaceshipsPilot;">, specifically on : </span></p>
+      <ul *ngIf="listSpaceshipsPilot;">
+        <li *ngFor="let Spaceship of listSpaceshipsPilot">{{ Spaceship.model }}</li>
+      </ul>
+    </div>
+    <div class="card-footer p-4 pt-0 bg-transparent border-top-0">
+      <div class="d-flex align-items-end justify-content-between">
+        <div class="d-flex align-items-center">
+        </div>
+      </div>
+    </div>
+  </div>

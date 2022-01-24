@@ -1,0 +1,141 @@
+<app-header></app-header>
+<div *ngIf="isDataAvailable">
+  <div class="container mt-3">
+    <div class="main-body">
+      <section class="row gutters-sm">
+        <div class="col-md-4 mb-3">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex flex-column align-items-center text-center">
+                <img src="{{ detailPilotReturned.picture }}" alt="Admin" class="rounded-circle" height="150">
+                <div class="mt-3">
+                  <h1>{{detailPilotReturned.name}}</h1>
+                  <p class="text-white mb-1">Interstellar Pilot</p>
+                  <p class="font-size-sm" *ngIf="detailHomeWorld">{{ detailHomeWorld.name }} Sector</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mt-3">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  *ngIf="detailPilotReturned.height;">
+                <h6 class="mb-0"><i class="fas fa-arrows-alt-v"></i> Height</h6>
+                <span class="text-secondary">{{detailPilotReturned.height}} cm</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  *ngIf="detailPilotReturned.mass;">
+                <h6 class="mb-0"><i class="fas fa-weight"></i> Weight</h6>
+                <span class="text-secondary">{{detailPilotReturned.mass}} kg</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  *ngIf="detailPilotReturned.hair_color;">
+                <h6 class="mb-0"><i class="fas fa-cut"></i> Hair color</h6>
+                <span class="text-secondary">{{detailPilotReturned.hair_color | titlecase }}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  *ngIf="detailPilotReturned.skin_color;">
+                <h6 class="mb-0"><i class="fas fa-user-tag"></i> Skin</h6>
+                <span class="text-secondary">{{detailPilotReturned.skin_color | titlecase}}</span>
+              </li>
+              <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
+                  *ngIf="detailPilotReturned.eye_color;">
+                <h6 class="mb-0"><i class="fas fa-eye"></i> Eye Color</h6>
+                <span class="text-secondary">{{detailPilotReturned.eye_color | titlecase}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8">
+          <div class="card mb-3">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Full Name</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  {{detailPilotReturned.name}}
+                </div>
+              </div>
+              <hr>
+              <div class="row" *ngIf="detailPilotReturned.birth_year;">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Birth</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  {{detailPilotReturned.birth_year}} <span *ngIf="detailHomeWorld;">on {{ detailHomeWorld.name }}</span>
+                </div>
+              </div>
+              <hr *ngIf="detailPilotReturned.birth_year;">
+              <div class="row" *ngIf="detailPilotReturned.gender;">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Gender</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  {{ detailPilotReturned.gender | titlecase }}
+                </div>
+              </div>
+              <hr *ngIf="detailPilotReturned.gender;">
+              <div class="row" *ngIf="listSpeciesPilot">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Species</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  {{ listSpeciesPilot[0].name | titlecase }} ({{ listSpeciesPilot[0].classification | titlecase }})
+                </div>
+              </div>
+              <hr *ngIf="listSpeciesPilot">
+              <div class="row" *ngIf="listSpeciesPilot;">
+                <div class="col-sm-3">
+                  <h6 class="mb-0">Spoken languages</h6>
+                </div>
+                <div class="col-sm-9 text-secondary">
+                  <span *ngFor="let Specie of listSpeciesPilot">{{ Specie.language }}</span>
+                </div>
+              </div>
+              <hr *ngIf="listSpeciesPilot">
+            </div>
+          </div>
+
+          <div class="row gutters-sm">
+            <div class="col-sm-6 mb-3" *ngIf="displayListSpaceshipPilotCapacities;">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h6 class="d-flex align-items-center mb-3"><i class="fas fa-space-shuttle colorizedIcon"></i>
+                    Piloting capacities</h6>
+                  <div *ngFor="let SpaceshipCapacities of displayListSpaceshipPilotCapacities">
+                    <span class="nameSpaceShip">{{SpaceshipCapacities.name}}</span>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-primary" role="progressbar"
+                           [style.width]="SpaceshipCapacities.number+'%'"
+                           [attr.aria-valuenow]="SpaceshipCapacities.number"
+                           aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-6 mb-3" *ngIf="displayListSpaceshipPilotCapacities;">
+              <div class="card h-100">
+                <div class="card-body">
+                  <h6 class="d-flex align-items-center mb-3"><i class="fas fa-bolt colorizedIcon text-danger"></i>
+                    Crashes (pilot responsible)</h6>
+                  <div *ngFor="let SpaceshipCapacities of displayListSpaceshipPilotCapacities">
+                    <span class="nameSpaceShip">{{SpaceshipCapacities.name}}</span>
+                    <div class="progress mb-3" style="height: 5px">
+                      <div class="progress-bar bg-danger" role="progressbar"
+                           [style.width]="SpaceshipCapacities.numberCrashes+'%'"
+                           [attr.aria-valuenow]="SpaceshipCapacities.numberCrashes"
+                           aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

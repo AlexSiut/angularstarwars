@@ -1,0 +1,30 @@
+<app-header></app-header>
+<main>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1>Welcome aboard</h1>
+        <p class="lead">
+          The company is proud to present its new spaceships. <br>Explore the features of our state-of-the-art space shuttles<br> and learn about our top pilots.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="album py-5 bg-dark">
+    <div class="container" *ngIf="isDataAvailable; else elseBlock">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <app-spaceship *ngFor="let Spaceship of Spaceships"
+                       [Spaceship]="Spaceship"></app-spaceship>
+      </div>
+    </div>
+  </div>
+  <ng-template #elseBlock>
+    <div class="text-center">
+    <h4>Searching available spaceships in progress...</h4>
+    <img src="assets/img/loading.gif">
+  </div>
+  </ng-template>
+</main>
+
+

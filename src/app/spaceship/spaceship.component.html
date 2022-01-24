@@ -1,0 +1,19 @@
+
+<div class="col cursor-pointer" (click)="onViewSpaceship()">
+  <div class="card shadow-sm">
+    <div class="internal_picture" style="background-image: url({{ Spaceship.picture }})">
+      <span class="model" *ngIf="Spaceship.starship_class">{{ Spaceship.starship_class | titlecase }}</span>
+    </div>
+    <div class="card-body">
+      <h2>{{ Spaceship.name }}</h2>
+      <h3>{{ Spaceship.manufacturer }}</h3>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="btn-group">
+          <button (click)="onViewSpaceship()" type="button" class="btn btn-primary">View détails</button>
+        </div>
+        <span class="price" *ngIf="Spaceship.cost_in_credits !== undefined && Spaceship.cost_in_credits > 0"><i class="fas fa-coins"></i> {{ Spaceship.cost_in_credits | currency: 'CRE ' }}</span><br><br>
+        <span class="price" *ngIf="Spaceship.pilots !== undefined && Spaceship.pilots.length > 0"><i class="fas fa-user-astronaut"></i> {{ Spaceship.pilots.length }} pilot<span *ngIf="Spaceship.pilots.length > 1">s</span></span>
+      </div>
+    </div>
+  </div>
+</div>
